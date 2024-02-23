@@ -85,9 +85,11 @@ export const uploadImage = async (req, res, next) => {
         uploadDate: Date.now(),
       },
     };
-    axios.post("http://localhost:4004/api/events", event).catch((err) => {
-      console.log(err.message);
-    });
+    axios
+      .post(`${process.env.EVENT_MANAGEMENT_URL}/api/events`, event)
+      .catch((err) => {
+        console.log(err.message);
+      });
     res.status(200).json({
       success: true,
       message: "Image uploaded successfully",
@@ -157,7 +159,7 @@ export const deleteImage = async (req, res, next) => {
       },
     };
 
-    await axios.post("http://localhost:4004/api/events", event);
+    await axios.post(`${process.env.EVENT_MANAGEMENT_URL}/api/events`, event);
 
     res.status(200).json({
       success: true,

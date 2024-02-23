@@ -6,7 +6,7 @@ const usageSchema = mongoose.Schema({
   },
   usageRemaining: {
     type: Number,
-    default: 25,
+    default: 150,
   },
 });
 

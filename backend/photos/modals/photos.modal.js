@@ -23,11 +23,11 @@ const photoSchema = mongoose.Schema({
   ],
   storageRemaining: {
     type: Number,
-    default: 10,
+    default: 100,
   },
   usageRemaining: {
     type: Number,
-    default: 25,
+    default: 150,
   },
 });
 

@@ -17,21 +17,29 @@ export const postEvent = (req, res, next) => {
   if (type == "usageUpdatedAtMidnight") {
     expression = `the daily usage limit updated for all users at midnight\n`;
   } else {
-    expression =  `the user with userId: ${data.userId} has triggerd this event: ${type}\n`;
+    expression = `the user with userId: ${data.userId} has triggerd this event: ${type}\n`;
   }
-  
+
   appendToFile("./logging.txt", expression);
-  axios.post("http://localhost:4001/api/events", event).catch((err) => {
-    console.log(err.message);
-  });
-  axios.post("http://localhost:4002/api/events", event).catch((err) => {
-    console.log(err.message);
-  });
-  axios.post("http://localhost:4003/api/events", event).catch((err) => {
-    console.log(err.message);
-  });
-  axios.post("http://localhost:4005/api/events", event).catch((err) => {
-    console.log(err.message);
-  });
+  axios
+    .post(`${process.env.PHOTOS_MANAGEMENT_URL}/api/events`, event)
+    .catch((err) => {
+      console.log(err.message);
+    });
+  axios
+    .post(`${process.env.STORAGE_MANAGEMENT_URL}/api/events`, event)
+    .catch((err) => {
+      console.log(err.message);
+    });
+  axios
+    .post(`${process.env.USAGE_MANAGEMENT_URL}/api/events`, event)
+    .catch((err) => {
+      console.log(err.message);
+    });
+  axios
+    .post(`${process.env.QUERY_MANAGEMENT_URL}/api/events`, event)
+    .catch((err) => {
+      console.log(err.message);
+    });
   res.send({ status: "OK" });
 };

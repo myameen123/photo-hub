@@ -30,9 +30,11 @@ const handleEvent = async (type, data) => {
         newUsage: newUsage,
       },
     };
-    axios.post("http://localhost:4004/api/events", event).catch((err) => {
-      console.log(err.message);
-    });
+    axios
+      .post(`${process.env.EVENT_MANAGEMENT_URL}/api/events`, event)
+      .catch((err) => {
+        console.log(err.message);
+      });
   }
 };
 export const eventHandler = async (req, res, next) => {

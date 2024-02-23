@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import "./PhotoDisplay.css";
 import ImageCard from "../ImageCard/ImageCard";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,17 +17,17 @@ const PhotoDisplay = ({ images, userId }) => {
 
   const handleImageDrop = (e) => {
     e.preventDefault();
-    const droppedFiles = Array.from(e.dataTransfer.files);
+    // const droppedFiles = Array.from(e.dataTransfer.files);
     // Filter and process only image files (assuming images are accepted)
-    const imageFiles = droppedFiles.filter((file) =>
-      file.type.startsWith("image/")
-    );
+    // const imageFiles = droppedFiles.filter((file) =>
+    //   file.type.startsWith("image/")
+    // );
     // console.log(imageFiles);
     // Process the image files and update state (for example: setImages(newImages))
     // You'll need to handle image upload logic here
   };
   useEffect(() => {
-    console.log(images);
+    // console.log(images);
     if (success) {
       toast.success("Image uploaded");
       window.location.reload();
@@ -74,7 +74,7 @@ const PhotoDisplay = ({ images, userId }) => {
         </form>
       </div>
       {images.length !== 0 ? (
-        <div className="image-gallery">
+        <div className="image-gallery" style={{ width: "100%" }}>
           {images.map((image, index) => (
             <ImageCard key={index} image={image} userId={userId} />
           ))}
