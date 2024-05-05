@@ -59,9 +59,9 @@ const Header = () => {
           <Button className="btn secondary__btn" onClick={() => setOpen(false)}>
             <Link to="/Login">{isLoggedIn ? `${authUser}` : "Login"}</Link>
           </Button>
-          <Button className="btn primary__btn" onClick={() => setOpen(false)}>
+{/*           <Button className="btn primary__btn" onClick={() => setOpen(false)}>
             <Link to="/register">{isLoggedIn ? "Logout" : "Register"}</Link>
-          </Button>
+          </Button> */}
           {/* </div> */}
         </div>
         <span
